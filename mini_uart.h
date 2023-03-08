@@ -18,3 +18,5 @@
 #define AUX_UART_CLOCK 500000000
 
 #define CONVERT_BAUD(x) ((AUX_UART_CLOCK/(x * 8)) - 1)
+
+void mini_uart_write_one_blocking(char);

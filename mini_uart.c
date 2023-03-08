@@ -1,4 +1,5 @@
-#include "mini_uart.h"
+#include <mini_uart.h>
+#include <printf.h>
 
 void writew(unsigned long reg, unsigned int val)
 {
@@ -60,5 +61,8 @@ void mini_uart_write_string(char *str)
 void kernel_main()
 {
 	mini_uart_init();
-	mini_uart_write_string("hello this is a line of text that you can hopefully see\r\n");
+	printf("i'm trying to print an integer: %d\n", 42);
+	mini_uart_write_string("hello this is a line of text that you can hopefully see\n and this part should be on a newline\n");
+	while(1)
+		mini_uart_write_one_blocking(mini_uart_read_one_blocking());
 }
